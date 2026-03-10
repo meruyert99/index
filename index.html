@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Меруерт - Қыз ұзату шақыруы</title>
+    <title>Меруерт - Қыз ұзату</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         :root {
-            --bg-color: #FDFBF7;
-            --accent-gold: #C5A059;
-            --accent-dark-red: #6B2737; 
-            --text-dark: #3E362E;
-            --text-light: #7A6F66;
-            --card-bg: rgba(255, 255, 255, 0.85);
+            --bg-color: #F8F5F0; /* Очень нежный бежевый */
+            --text-main: #5C5248; /* Мягкий кофейно-серый */
+            --gold: #C6A87C; /* Приглушенное, благородное золото */
+            --gold-light: #E8DCC8;
+            --white: #FFFFFF;
         }
 
         * { 
@@ -28,101 +27,84 @@
             padding: 0;
             font-family: 'Montserrat', sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-dark);
+            color: var(--text-main);
             overflow-x: hidden;
-            line-height: 1.6;
+            line-height: 1.8;
+            font-weight: 300;
         }
 
-        .bg-pattern {
-            background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.15;
-        }
-
+        /* Кнопка музыки */
         .music-btn {
             position: fixed;
             bottom: 30px;
             right: 30px;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.9);
-            border: 2px solid var(--accent-gold);
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid var(--gold);
             border-radius: 50%;
-            width: 55px;
-            height: 55px;
+            width: 50px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 8px 25px rgba(197, 160, 89, 0.4);
+            box-shadow: 0 4px 15px rgba(198, 168, 124, 0.2);
             backdrop-filter: blur(5px);
             transition: all 0.3s ease;
         }
 
-        .music-btn:hover {
-            transform: scale(1.1);
-        }
-
+        /* Главный экран */
         header {
-            height: 100vh;
-            background: linear-gradient(rgba(44, 36, 27, 0.5), rgba(107, 39, 55, 0.4)), 
-                        url('https://images.unsplash.com/photo-1554907293-2736780c9e62?q=80&w=2000'); 
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 20px;
+            padding: 40px 20px;
             position: relative;
         }
 
-        .hero-content {
-            background: rgba(253, 251, 247, 0.2);
-            backdrop-filter: blur(10px);
-            padding: 50px 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(197, 160, 89, 0.5);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-        }
-
-        .ornament-img {
-            width: 100px;
-            margin-bottom: 20px;
-            filter: invert(72%) sepia(35%) saturate(740%) hue-rotate(5deg) brightness(94%) contrast(88%);
+        /* Трендовая фотография в форме арки */
+        .hero-arch {
+            width: 100%;
+            max-width: 380px;
+            height: 500px;
+            border-radius: 200px 200px 0 0;
+            object-fit: cover;
+            box-shadow: 0 15px 40px rgba(92, 82, 72, 0.15);
+            margin-bottom: 30px;
+            border: 5px solid var(--white);
         }
 
         .main-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(3.5rem, 12vw, 6rem);
-            color: #ffffff;
-            margin: 15px 0;
-            font-weight: 600;
-            text-shadow: 2px 4px 10px rgba(0,0,0,0.4);
+            font-size: clamp(3.5rem, 10vw, 5.5rem);
+            color: var(--text-main);
+            margin: 10px 0;
+            font-weight: 400;
+            line-height: 1;
         }
 
         .subtitle {
-            letter-spacing: 6px; 
+            letter-spacing: 5px; 
             text-transform: uppercase; 
-            color: #F3E5AB;
-            font-size: 1rem;
-            font-weight: 500;
+            color: var(--gold);
+            font-size: 0.85rem;
+            margin-bottom: 15px;
         }
 
         .date-title {
-            font-size: 1.5rem; 
-            color: #ffffff;
-            font-family: 'Cormorant Garamond', serif;
-            letter-spacing: 2px;
-            margin-top: 10px;
+            font-size: 1.2rem; 
+            color: var(--text-main);
+            letter-spacing: 4px;
+            margin-top: 15px;
+            font-weight: 300;
         }
 
+        /* Общие стили секций */
         .section {
-            padding: 100px 20px;
+            padding: 80px 20px;
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
@@ -130,229 +112,226 @@
 
         h2 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 3rem;
-            color: var(--accent-dark-red);
-            margin-bottom: 40px;
-            font-weight: 600;
+            font-size: 2.8rem;
+            color: var(--gold);
+            margin-bottom: 30px;
+            font-weight: 400;
+            font-style: italic;
         }
 
         p {
-            font-size: 1.1rem;
-            color: var(--text-dark);
-            margin-bottom: 20px;
+            font-size: 1rem;
+            margin-bottom: 15px;
         }
 
-        .glass-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(197, 160, 89, 0.3);
-            padding: 50px 30px;
-            border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-            position: relative;
+        /* Изящный разделитель */
+        .divider {
+            width: 1px;
+            height: 60px;
+            background-color: var(--gold);
+            margin: 0 auto 40px;
         }
 
+        /* Таймер */
         .timer {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
+            gap: 10px;
             margin: 40px 0;
         }
 
         .timer-item {
-            background: #ffffff;
             padding: 20px 10px;
-            border-radius: 16px;
-            box-shadow: 0 10px 20px rgba(107, 39, 55, 0.05);
-            border: 1px solid rgba(197, 160, 89, 0.2);
-            transition: transform 0.3s ease;
+            border-right: 1px solid var(--gold-light);
         }
-
-        .timer-item:hover {
-            transform: translateY(-5px);
+        
+        .timer-item:last-child {
+            border-right: none;
         }
 
         .timer-item span {
             display: block;
             font-family: 'Cormorant Garamond', serif;
             font-size: 2.5rem;
-            font-weight: 600;
-            color: var(--accent-dark-red);
-            line-height: 1;
+            color: var(--text-main);
             margin-bottom: 5px;
         }
 
         .timer-item div {
-            font-size: 0.85rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-light);
+            letter-spacing: 2px;
+            color: var(--gold);
         }
 
+        /* Центральный таймлайн (Программа) */
         .timeline {
-            text-align: left;
+            position: relative;
+            max-width: 400px;
             margin: 0 auto;
-            max-width: 450px;
-            border-left: 2px dashed var(--accent-gold);
-            padding: 10px 0 10px 40px;
+            padding: 20px 0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 1px;
+            background-color: var(--gold-light);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -0.5px;
         }
 
         .timeline-item {
+            padding: 20px 0;
             position: relative;
-            margin-bottom: 40px;
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-            border: 1px solid rgba(197, 160, 89, 0.2);
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -51px;
-            top: 20px;
-            width: 16px;
-            height: 16px;
-            background: var(--bg-color);
-            border-radius: 50%;
-            border: 4px solid var(--accent-gold);
+            z-index: 1;
         }
 
         .timeline-time {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--accent-gold);
+            font-size: 1.8rem;
+            color: var(--gold);
             display: block;
             margin-bottom: 5px;
         }
 
+        /* Премиальная Форма */
+        .rsvp-form {
+            background: var(--white);
+            padding: 60px 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
         input, select {
             width: 100%;
-            padding: 18px 20px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(197, 160, 89, 0.3);
-            border-radius: 12px;
+            padding: 15px 0;
+            margin-bottom: 30px;
+            border: none;
+            border-bottom: 1px solid var(--gold-light);
             outline: none;
             font-family: inherit;
             font-size: 1rem;
-            background: #ffffff;
+            background: transparent;
+            color: var(--text-main);
             transition: all 0.3s ease;
         }
 
         input:focus, select:focus {
-            border-color: var(--accent-dark-red);
-            box-shadow: 0 0 0 3px rgba(107, 39, 55, 0.1);
+            border-bottom: 1px solid var(--gold);
+        }
+
+        /* Убираем стандартную стрелочку у select и делаем красиво */
+        select {
+            appearance: none;
+            cursor: pointer;
         }
 
         .btn {
-            background: linear-gradient(135deg, #C5A059 0%, #A68340 100%);
-            color: white;
-            padding: 18px 45px;
+            background: var(--text-main);
+            color: var(--white);
+            padding: 16px 40px;
             border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 500;
-            letter-spacing: 1px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
             cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(197, 160, 89, 0.3);
             width: 100%;
-            max-width: 300px;
+            margin-top: 10px;
         }
 
         .btn:hover { 
-            transform: translateY(-3px); 
-            box-shadow: 0 15px 25px rgba(197, 160, 89, 0.4); 
+            background: var(--gold);
         }
 
+        .btn-outline {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--gold);
+            margin-top: 20px;
+        }
+        
+        .btn-outline:hover {
+            background: var(--gold);
+            color: var(--white);
+        }
+
+        /* Той иелері */
         .hosts-section {
-            padding: 50px 20px;
+            padding: 60px 20px;
             text-align: center;
-        }
-
-        .hosts-title {
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: var(--text-light);
-            margin-bottom: 10px;
         }
 
         .hosts-names {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 3rem;
-            color: var(--accent-gold);
-            font-weight: 600;
-            margin: 0;
+            font-size: 2.5rem;
+            color: var(--text-main);
+            margin: 10px 0;
+            font-style: italic;
         }
 
         footer {
-            padding: 60px 20px;
-            background: #2C241B;
-            color: #ffffff;
+            padding: 40px 20px;
             text-align: center;
-            margin-top: 20px;
-            position: relative;
+            border-top: 1px solid var(--gold-light);
+            margin-top: 40px;
         }
 
         footer p {
-            color: rgba(255,255,255,0.8);
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); box-shadow: 0 0 20px rgba(197, 160, 89, 0.6); }
-            100% { transform: scale(1); }
+            font-size: 0.8rem;
+            color: var(--gold);
+            letter-spacing: 1px;
         }
 
         @media (max-width: 500px) {
-            .timer { gap: 8px; }
-            .timer-item { padding: 15px 5px; }
+            .hero-arch { height: 400px; }
+            .timer-item { padding: 10px 5px; }
             .timer-item span { font-size: 1.8rem; }
-            .timer-item div { font-size: 0.7rem; }
-            .glass-card { padding: 30px 20px; }
-            .hosts-names { font-size: 2.5rem; }
+            .rsvp-form { padding: 40px 20px; }
         }
     </style>
 </head>
 <body>
-
-    <div class="bg-pattern"></div>
 
     <audio id="bgMusic" loop>
         <source src="dombyra.mp3" type="audio/mpeg">
     </audio>
 
     <div class="music-btn" onclick="toggleMusic()">
-        <span id="musicIcon" style="font-size: 22px;">🎵</span>
+        <span id="musicIcon" style="font-size: 20px; color: #C6A87C;">🎵</span>
     </div>
 
     <header>
-        <div class="hero-content" data-aos="zoom-in" data-aos-duration="1500">
-            <img src="https://cdn-icons-png.flaticon.com/512/3106/3106841.png" class="ornament-img" alt="Ою-өрнек">
+        <img src="https://images.unsplash.com/photo-1598460627581-80d5b4a55928?q=80&w=800" alt="Қазақ қызы" class="hero-arch" data-aos="fade-up" data-aos-duration="1500">
+        
+        <div data-aos="fade-up" data-aos-delay="300">
             <p class="subtitle">Қыз ұзату</p>
             <h1 class="main-title">Меруерт</h1>
             <p class="date-title">05 . 07 . 2026</p>
         </div>
     </header>
 
-    <section class="section" data-aos="fade-up">
-        <h2>Құрметті ағайын-туыс!</h2>
-        <div class="glass-card">
-            <p>Сіздерді қызымыздың ұзату тойына арналған ақ дастарханымыздың қадірлі қонағы болуға шын жүректен шақырамыз!</p>
-            <p style="font-style: italic; color: var(--text-light); margin-top: 20px;">
-                "Қыз — жат жұрттық" десе де дана халқымыз, ұядан ұшырып, жаңа өмірге қадам бастырар сәтте сіздердің ақ баталарыңыз біз үшін өте маңызды.
-            </p>
-            <img src="https://images.unsplash.com/photo-1598460627581-80d5b4a55928?q=80&w=600" alt="Қазақ қызы" style="width: 100%; border-radius: 16px; margin-top: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
-        </div>
-    </section>
+    <div class="divider" data-aos="fade-up"></div>
 
     <section class="section" data-aos="fade-up">
-        <h2>Тойға дейін қалды:</h2>
+        <h2>Құрметті ағайын-туыс!</h2>
+        <p>Сіздерді қызымыздың ұзату тойына арналған<br>ақ дастарханымыздың қадірлі қонағы болуға<br>шын жүректен шақырамыз!</p>
+        <br>
+        <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; color: var(--gold);">
+            "Қыз — жат жұрттық" десе де дана халқымыз,<br>ұядан ұшырып, жаңа өмірге қадам бастырар сәтте<br>сіздердің ақ баталарыңыз біз үшін өте маңызды.
+        </p>
+    </section>
+
+    <div class="divider" data-aos="fade-up"></div>
+
+    <section class="section" data-aos="fade-up">
+        <p class="subtitle" style="color: var(--text-main);">Тойға дейін қалды</p>
         <div class="timer">
             <div class="timer-item"><span id="days">0</span><div>күн</div></div>
             <div class="timer-item"><span id="hours">0</span><div>сағат</div></div>
@@ -361,87 +340,80 @@
         </div>
     </section>
 
+    <div class="divider" data-aos="fade-up"></div>
+
     <section class="section" data-aos="fade-up">
         <h2>Кеш бағдарламасы</h2>
         <div class="timeline">
-            <div class="timeline-item" data-aos="fade-left" data-aos-delay="100">
+            <div class="timeline-item" data-aos="fade-up">
                 <span class="timeline-time">14:00</span>
-                Қонақтарды қарсы алу
+                <p style="margin:0;">Қонақтарды қарсы алу</p>
             </div>
-            <div class="timeline-item" data-aos="fade-left" data-aos-delay="200">
+            <div class="timeline-item" data-aos="fade-up">
                 <span class="timeline-time">15:00</span>
-                Салтанатты ашылу
+                <p style="margin:0;">Салтанатты ашылу</p>
             </div>
-            <div class="timeline-item" data-aos="fade-left" data-aos-delay="300">
+            <div class="timeline-item" data-aos="fade-up">
                 <span class="timeline-time">17:00</span>
-                Дәстүрлі шаралар
+                <p style="margin:0;">Дәстүрлі шаралар</p>
             </div>
-            <div class="timeline-item" data-aos="fade-left" data-aos-delay="400">
+            <div class="timeline-item" data-aos="fade-up">
                 <span class="timeline-time">20:00</span>
-                Қызды шығарып салу
+                <p style="margin:0;">Қызды шығарып салу</p>
             </div>
         </div>
     </section>
 
-    <section class="section" data-aos="fade-up">
-        <h2>Дресс-код</h2>
-        <div class="glass-card">
-            <div style="font-size: 3.5rem; margin-bottom: 20px;">👘</div>
-            <p>Құрметті қонақтар! Тойдың сәнін келтіру үшін, сіздерден <strong>ұлттық нақыштағы</strong> (ою-өрнекті) киім немесе заманауи этникалық стильдегі киім киіп келулеріңізді сұраймыз.</p>
-        </div>
-    </section>
+    <div class="divider" data-aos="fade-up"></div>
 
     <section class="section" data-aos="fade-up">
         <h2>Өтетін орны</h2>
-        <div class="glass-card">
-            <p style="font-size: 1.3rem;">Көкшетау қаласы,<br><strong>"Көкшетау"</strong> мейрамханасы</p>
-            <br>
-            <a href="https://2gis.kz" target="_blank" class="btn">Мекенжайды картадан ашу</a>
-        </div>
+        <p>Көкшетау қаласы,<br><strong>"Көкшетау"</strong> мейрамханасы</p>
+        <br>
+        <a href="https://2gis.kz" target="_blank" class="btn btn-outline" style="display: inline-block; width: auto;">Картадан ашу</a>
     </section>
 
     <section class="section" id="rsvp" data-aos="fade-up">
-        <div class="glass-card">
-            <h2>Қатысуыңызды растаңыз</h2>
-            <p style="margin-bottom: 30px;">Жауабыңызды күтеміз</p>
+        <div class="rsvp-form">
+            <h2 style="font-size: 2.2rem; margin-bottom: 10px;">Қатысуыңызды растаңыз</h2>
+            <p style="margin-bottom: 40px; font-size: 0.9rem; color: var(--gold);">Жауабыңызды күтеміз</p>
             
             <input type="text" id="guestName" placeholder="Сіздің есіміңіз">
+            
             <select id="attendance">
-                <option value="Қатысамын">Тойға келемін</option>
+                <option value="Қатысамын">Иә, тойға келемін</option>
                 <option value="Қатыса алмаймын">Өкінішке орай, келе алмаймын</option>
             </select>
+            
             <input type="number" id="guestCount" placeholder="Қонақ саны" min="1">
+            
             <button class="btn" onclick="sendToWhatsApp()">Жіберу</button>
         </div>
     </section>
 
     <section class="hosts-section" data-aos="fade-up">
-        <p class="hosts-title">Той иелері</p>
-        <p class="hosts-names">Жанатай - Гүлнара</p>
+        <p class="subtitle">Той иелері</p>
+        <p class="hosts-names">Жанатай — Гүлнара</p>
     </section>
 
     <footer>
-        <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--accent-gold);">~ Отбасы тілегі ~</p>
-        <p>Біздің қуанышымызға ортақ болғаныңызға рақмет!</p>
-        <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.5;">© 2026 Меруерт Қыз ұзату</p>
+        <p>© 2026 МЕРУЕРТ ҚЫЗ ҰЗАТУ</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true, offset: 100 });
+        AOS.init({ duration: 1200, once: true, offset: 50 });
 
         const audio = document.getElementById("bgMusic");
         const icon = document.getElementById("musicIcon");
 
         function toggleMusic() {
             if (audio.paused) {
-                audio.play().catch(e => alert("Музыка файлы табылмады (dombyra.mp3). Пожалуйста, добавьте файл с музыкой."));
+                audio.play().catch(e => alert("Добавьте файл dombyra.mp3 в папку с сайтом."));
                 icon.innerText = "⏸️";
-                icon.parentElement.style.animation = "pulse 1.5s infinite";
             } else {
                 audio.pause();
                 icon.innerText = "🎵";
-                icon.parentElement.style.animation = "none";
             }
         }
 
@@ -462,10 +434,10 @@
             const name = document.getElementById('guestName').value;
             const status = document.getElementById('attendance').value;
             const count = document.getElementById('guestCount').value;
-            const phone = "77000000000"; // Өз нөміріңізді жазыңыз
+            const phone = "77000000000"; // Сюда впиши свой номер
 
             if (!name) { 
-                alert("Есіміңізді жазыңыз!"); 
+                alert("Есіміңізді жазыңыз / Введите ваше имя!"); 
                 return; 
             }
 
