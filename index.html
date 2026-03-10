@@ -5,207 +5,317 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Меруерт - Қыз ұзату шақыруы</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=Marck+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         :root {
-            --soft-pink: #fdf6f6;
-            --gold: #c5a059;
-            --dark-text: #4a443f;
-            --white: #ffffff;
-            --beige: #f9f3eb;
+            --bg-color: #FDFBF7;
+            --accent-gold: #C5A059;
+            --accent-dark-red: #6B2737; 
+            --text-dark: #3E362E;
+            --text-light: #7A6F66;
+            --card-bg: rgba(255, 255, 255, 0.85);
         }
 
-        * { box-sizing: border-box; scroll-behavior: smooth; }
+        * { 
+            box-sizing: border-box; 
+            scroll-behavior: smooth; 
+        }
         
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Comfortaa', sans-serif;
-            background-color: var(--soft-pink);
-            color: var(--dark-text);
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* Фондық ою-өрнек */
         .bg-pattern {
-            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+            background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
             position: fixed;
             width: 100%;
             height: 100%;
             z-index: -1;
-            opacity: 0.5;
+            opacity: 0.15;
         }
 
-        /* Музыка батырмасы */
         .music-btn {
             position: fixed;
-            bottom: 25px;
-            right: 25px;
+            bottom: 30px;
+            right: 30px;
             z-index: 1000;
-            background: var(--white);
-            border: 2px solid var(--gold);
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid var(--accent-gold);
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 25px rgba(197, 160, 89, 0.4);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
         }
 
-        /* Басты бет (Hero) */
+        .music-btn:hover {
+            transform: scale(1.1);
+        }
+
         header {
             height: 100vh;
-            background: linear-gradient(rgba(253, 246, 246, 0.5), rgba(253, 246, 246, 0.5)), 
-                        url('https://images.unsplash.com/photo-1581375221876-8f3c82526f87?q=80&w=2000'); /* Қазақша дәстүрлі киімдегі қыз (уақытша фото) */
+            background: linear-gradient(rgba(44, 36, 27, 0.5), rgba(107, 39, 55, 0.4)), 
+                        url('https://images.unsplash.com/photo-1554907293-2736780c9e62?q=80&w=2000'); 
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 20px;
+            position: relative;
+        }
+
+        .hero-content {
+            background: rgba(253, 251, 247, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 50px 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(197, 160, 89, 0.5);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        .ornament-img {
+            width: 100px;
+            margin-bottom: 20px;
+            filter: invert(72%) sepia(35%) saturate(740%) hue-rotate(5deg) brightness(94%) contrast(88%);
         }
 
         .main-title {
-            font-family: 'Marck Script', cursive;
-            font-size: clamp(3rem, 10vw, 5rem);
-            color: var(--gold);
-            margin: 10px 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3.5rem, 12vw, 6rem);
+            color: #ffffff;
+            margin: 15px 0;
+            font-weight: 600;
+            text-shadow: 2px 4px 10px rgba(0,0,0,0.4);
         }
 
-        .ornament {
-            width: 120px;
-            margin-bottom: 20px;
-            filter: sepia(1) saturate(2);
+        .subtitle {
+            letter-spacing: 6px; 
+            text-transform: uppercase; 
+            color: #F3E5AB;
+            font-size: 1rem;
+            font-weight: 500;
         }
 
-        /* Бөлімдер */
+        .date-title {
+            font-size: 1.5rem; 
+            color: #ffffff;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 2px;
+            margin-top: 10px;
+        }
+
         .section {
-            padding: 80px 20px;
+            padding: 100px 20px;
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
         }
 
         h2 {
-            font-family: 'Marck Script', cursive;
-            font-size: 2.8rem;
-            color: var(--gold);
-            margin-bottom: 30px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--accent-dark-red);
+            margin-bottom: 40px;
+            font-weight: 600;
         }
 
-        /* Таймер */
+        p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            padding: 50px 30px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
         .timer {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
+            gap: 15px;
             margin: 40px 0;
         }
 
         .timer-item {
-            background: var(--white);
-            padding: 15px 5px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            background: #ffffff;
+            padding: 20px 10px;
+            border-radius: 16px;
+            box-shadow: 0 10px 20px rgba(107, 39, 55, 0.05);
             border: 1px solid rgba(197, 160, 89, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .timer-item:hover {
+            transform: translateY(-5px);
         }
 
         .timer-item span {
             display: block;
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--gold);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--accent-dark-red);
+            line-height: 1;
+            margin-bottom: 5px;
         }
 
-        /* Кеш бағдарламасы */
+        .timer-item div {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-light);
+        }
+
         .timeline {
             text-align: left;
-            margin: 40px auto;
-            max-width: 400px;
-            border-left: 2px solid var(--gold);
-            padding: 0 0 0 30px;
+            margin: 0 auto;
+            max-width: 450px;
+            border-left: 2px dashed var(--accent-gold);
+            padding: 10px 0 10px 40px;
         }
 
         .timeline-item {
             position: relative;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            border: 1px solid rgba(197, 160, 89, 0.2);
         }
 
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -41px;
-            top: 5px;
-            width: 20px;
-            height: 20px;
-            background: var(--gold);
+            left: -51px;
+            top: 20px;
+            width: 16px;
+            height: 16px;
+            background: var(--bg-color);
             border-radius: 50%;
-            border: 4px solid var(--soft-pink);
+            border: 4px solid var(--accent-gold);
         }
 
-        /* Дресс-код */
-        .dress-code-card {
-            background: var(--beige);
-            padding: 40px 20px;
-            border-radius: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            margin-top: 30px;
+        .timeline-time {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+            display: block;
+            margin-bottom: 5px;
         }
 
-        .dress-code-icon {
-            font-size: 3rem;
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
-
-        /* Форма (RSVP) */
-        .rsvp-card {
-            background: var(--white);
-            padding: 40px 20px;
-            border-radius: 30px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
-        }
-
-        input, select, textarea {
+        input, select {
             width: 100%;
-            padding: 15px;
-            margin-bottom: 15px;
-            border: 1px solid #e2e2e2;
+            padding: 18px 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(197, 160, 89, 0.3);
             border-radius: 12px;
             outline: none;
             font-family: inherit;
+            font-size: 1rem;
+            background: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--accent-dark-red);
+            box-shadow: 0 0 0 3px rgba(107, 39, 55, 0.1);
         }
 
         .btn {
-            background: var(--gold);
+            background: linear-gradient(135deg, #C5A059 0%, #A68340 100%);
             color: white;
             padding: 18px 45px;
             border: none;
             border-radius: 50px;
             font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 1px;
             cursor: pointer;
             text-decoration: none;
             display: inline-block;
-            transition: 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(197, 160, 89, 0.3);
+            width: 100%;
+            max-width: 300px;
         }
 
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(197, 160, 89, 0.3); }
+        .btn:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 15px 25px rgba(197, 160, 89, 0.4); 
+        }
+
+        .hosts-section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .hosts-title {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        .hosts-names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--accent-gold);
+            font-weight: 600;
+            margin: 0;
+        }
 
         footer {
             padding: 60px 20px;
-            background: var(--beige);
-            margin-top: 50px;
+            background: #2C241B;
+            color: #ffffff;
+            text-align: center;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        footer p {
+            color: rgba(255,255,255,0.8);
         }
 
         @keyframes pulse {
             0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            50% { transform: scale(1.1); box-shadow: 0 0 20px rgba(197, 160, 89, 0.6); }
             100% { transform: scale(1); }
+        }
+
+        @media (max-width: 500px) {
+            .timer { gap: 8px; }
+            .timer-item { padding: 15px 5px; }
+            .timer-item span { font-size: 1.8rem; }
+            .timer-item div { font-size: 0.7rem; }
+            .glass-card { padding: 30px 20px; }
+            .hosts-names { font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -214,96 +324,118 @@
     <div class="bg-pattern"></div>
 
     <audio id="bgMusic" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+        <source src="dombyra.mp3" type="audio/mpeg">
     </audio>
 
     <div class="music-btn" onclick="toggleMusic()">
-        <span id="musicIcon" style="font-size: 20px;">🎵</span>
+        <span id="musicIcon" style="font-size: 22px;">🎵</span>
     </div>
 
     <header>
-        <img src="https://cdn-icons-png.flaticon.com/512/3106/3106841.png" class="ornament" alt="ою" data-aos="zoom-in">
-        <div data-aos="fade-up">
-            <p style="letter-spacing: 4px; text-transform: uppercase; color: var(--gold);">Қыз ұзату</p>
+        <div class="hero-content" data-aos="zoom-in" data-aos-duration="1500">
+            <img src="https://cdn-icons-png.flaticon.com/512/3106/3106841.png" class="ornament-img" alt="Ою-өрнек">
+            <p class="subtitle">Қыз ұзату</p>
             <h1 class="main-title">Меруерт</h1>
-            <p style="font-size: 1.2rem; color: var(--gold);">05 . 07 . 2026</p>
+            <p class="date-title">05 . 07 . 2026</p>
         </div>
     </header>
 
     <section class="section" data-aos="fade-up">
         <h2>Құрметті ағайын-туыс!</h2>
-        <p>Сіздерді қызымыздың ұзату тойына арналған ақ дастарханымыздың қадірлі қонағы болуға шын жүректен шақырамыз!</p>
-        <p><i>"Қыз — жат жұрттық" десе де дана халқымыз, ұядан ұшырып, жаңа өмірге қадам бастырар сәтте сіздердің ақ баталарыңыз біз үшін өте маңызды.</i></p>
-        <img src="https://images.unsplash.com/photo-1512411019054-9e9f658390b1?q=80&w=600" alt="Киіз үй (уақытша фото)" style="width: 100%; max-width: 400px; border-radius: 20px; margin-top: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+        <div class="glass-card">
+            <p>Сіздерді қызымыздың ұзату тойына арналған ақ дастарханымыздың қадірлі қонағы болуға шын жүректен шақырамыз!</p>
+            <p style="font-style: italic; color: var(--text-light); margin-top: 20px;">
+                "Қыз — жат жұрттық" десе де дана халқымыз, ұядан ұшырып, жаңа өмірге қадам бастырар сәтте сіздердің ақ баталарыңыз біз үшін өте маңызды.
+            </p>
+            <img src="https://images.unsplash.com/photo-1598460627581-80d5b4a55928?q=80&w=600" alt="Қазақ қызы" style="width: 100%; border-radius: 16px; margin-top: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+        </div>
     </section>
 
     <section class="section" data-aos="fade-up">
-        <h2 style="font-size: 2rem;">Тойға дейін:</h2>
+        <h2>Тойға дейін қалды:</h2>
         <div class="timer">
-            <div class="timer-item"><span id="days">0</span>күн</div>
-            <div class="timer-item"><span id="hours">0</span>сағат</div>
-            <div class="timer-item"><span id="minutes">0</span>мин</div>
-            <div class="timer-item"><span id="seconds">0</span>сек</div>
+            <div class="timer-item"><span id="days">0</span><div>күн</div></div>
+            <div class="timer-item"><span id="hours">0</span><div>сағат</div></div>
+            <div class="timer-item"><span id="minutes">0</span><div>мин</div></div>
+            <div class="timer-item"><span id="seconds">0</span><div>сек</div></div>
         </div>
     </section>
 
     <section class="section" data-aos="fade-up">
         <h2>Кеш бағдарламасы</h2>
         <div class="timeline">
-            <div class="timeline-item"><strong>14:00</strong> — Қонақтарды қарсы алу</div>
-            <div class="timeline-item"><strong>15:00</strong> — Салтанатты ашылу</div>
-            <div class="timeline-item"><strong>17:00</strong> — Дәстүрлі шаралар</div>
-            <div class="timeline-item"><strong>20:00</strong> — Қызды шығарып салу</div>
+            <div class="timeline-item" data-aos="fade-left" data-aos-delay="100">
+                <span class="timeline-time">14:00</span>
+                Қонақтарды қарсы алу
+            </div>
+            <div class="timeline-item" data-aos="fade-left" data-aos-delay="200">
+                <span class="timeline-time">15:00</span>
+                Салтанатты ашылу
+            </div>
+            <div class="timeline-item" data-aos="fade-left" data-aos-delay="300">
+                <span class="timeline-time">17:00</span>
+                Дәстүрлі шаралар
+            </div>
+            <div class="timeline-item" data-aos="fade-left" data-aos-delay="400">
+                <span class="timeline-time">20:00</span>
+                Қызды шығарып салу
+            </div>
         </div>
     </section>
 
     <section class="section" data-aos="fade-up">
         <h2>Дресс-код</h2>
-        <div class="dress-code-card">
-            <div class="dress-code-icon">👘</div>
+        <div class="glass-card">
+            <div style="font-size: 3.5rem; margin-bottom: 20px;">👘</div>
             <p>Құрметті қонақтар! Тойдың сәнін келтіру үшін, сіздерден <strong>ұлттық нақыштағы</strong> (ою-өрнекті) киім немесе заманауи этникалық стильдегі киім киіп келулеріңізді сұраймыз.</p>
         </div>
     </section>
 
     <section class="section" data-aos="fade-up">
         <h2>Өтетін орны</h2>
-        <p>Көкшетау қаласы, <strong>"Көкшетау"</strong> мейрамханасы</p>
-        <br>
-        <a href="https://2gis.kz" class="btn">Мекенжайды картадан ашу</a>
+        <div class="glass-card">
+            <p style="font-size: 1.3rem;">Көкшетау қаласы,<br><strong>"Көкшетау"</strong> мейрамханасы</p>
+            <br>
+            <a href="https://2gis.kz" target="_blank" class="btn">Мекенжайды картадан ашу</a>
+        </div>
     </section>
 
     <section class="section" id="rsvp" data-aos="fade-up">
-        <div class="rsvp-card">
+        <div class="glass-card">
             <h2>Қатысуыңызды растаңыз</h2>
-            <p>Жауабыңызды күтеміз</p>
-            <br>
+            <p style="margin-bottom: 30px;">Жауабыңызды күтеміз</p>
+            
             <input type="text" id="guestName" placeholder="Сіздің есіміңіз">
             <select id="attendance">
                 <option value="Қатысамын">Тойға келемін</option>
                 <option value="Қатыса алмаймын">Өкінішке орай, келе алмаймын</option>
             </select>
-            <input type="number" id="guestCount" placeholder="Қонақ саны">
+            <input type="number" id="guestCount" placeholder="Қонақ саны" min="1">
             <button class="btn" onclick="sendToWhatsApp()">Жіберу</button>
         </div>
     </section>
 
+    <section class="hosts-section" data-aos="fade-up">
+        <p class="hosts-title">Той иелері</p>
+        <p class="hosts-names">Жанатай - Гүлнара</p>
+    </section>
+
     <footer>
-        <p><strong>- Отбасы тілегі -</strong></p>
+        <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--accent-gold);">~ Отбасы тілегі ~</p>
         <p>Біздің қуанышымызға ортақ болғаныңызға рақмет!</p>
-        <p style="margin-top: 20px; opacity: 0.7;">© 2026 Меруерт Қыз ұзату</p>
+        <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.5;">© 2026 Меруерт Қыз ұзату</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
+        AOS.init({ duration: 1000, once: true, offset: 100 });
 
-        // Музыканы басқару
         const audio = document.getElementById("bgMusic");
         const icon = document.getElementById("musicIcon");
 
         function toggleMusic() {
             if (audio.paused) {
-                audio.play();
+                audio.play().catch(e => alert("Музыка файлы табылмады (dombyra.mp3). Пожалуйста, добавьте файл с музыкой."));
                 icon.innerText = "⏸️";
                 icon.parentElement.style.animation = "pulse 1.5s infinite";
             } else {
@@ -313,27 +445,31 @@
             }
         }
 
-        // Таймер
         const target = new Date('July 5, 2026 14:00:00').getTime();
         setInterval(() => {
             const now = new Date().getTime();
             const diff = target - now;
-            document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
-            document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            document.getElementById('minutes').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            document.getElementById('seconds').innerText = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            if(diff > 0) {
+                document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+                document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById('minutes').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById('seconds').innerText = Math.floor((diff % (1000 * 60)) / 1000);
+            }
         }, 1000);
 
-        // WhatsApp-қа жіберу
         function sendToWhatsApp() {
             const name = document.getElementById('guestName').value;
             const status = document.getElementById('attendance').value;
             const count = document.getElementById('guestCount').value;
-            const phone = "77000000000"; // ОСЫ ЖЕРГЕ ӨЗ НӨМІРІҢІЗДІ ЖАЗЫҢЫЗ
+            const phone = "77000000000"; // Өз нөміріңізді жазыңыз
 
-            if (!name) { alert("Есіміңізді жазыңыз!"); return; }
+            if (!name) { 
+                alert("Есіміңізді жазыңыз!"); 
+                return; 
+            }
 
-            const msg = `Сәлеметсіз бе! %0AМен: ${name} %0AЖауабым: ${status} %0AҚонақ саны: ${count}`;
+            const msg = `Сәлеметсіз бе! %0AМен: ${name} %0AЖауабым: ${status} %0AҚонақ саны: ${count || 1}`;
             window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
         }
     </script>
