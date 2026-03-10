@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меруерт - Қыз ұзату шақыруы</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=Marck+Script&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --soft-pink: #fdf6f6;
+            --gold: #c5a059;
+            --dark-text: #4a443f;
+            --white: #ffffff;
+            --beige: #f9f3eb;
+        }
+
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Comfortaa', sans-serif;
+            background-color: var(--soft-pink);
+            color: var(--dark-text);
+            overflow-x: hidden;
+        }
+
+        /* Фондық ою-өрнек */
+        .bg-pattern {
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        /* Музыка батырмасы */
+        .music-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
+            background: var(--white);
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Басты бет (Hero) */
+        header {
+            height: 100vh;
+            background: linear-gradient(rgba(253, 246, 246, 0.6), rgba(253, 246, 246, 0.6)), 
+                        url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2000'); 
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .main-title {
+            font-family: 'Marck Script', cursive;
+            font-size: clamp(3rem, 10vw, 5rem);
+            color: var(--gold);
+            margin: 10px 0;
+        }
+
+        .ornament {
+            width: 120px;
+            margin-bottom: 20px;
+            filter: sepia(1) saturate(2);
+        }
+
+        /* Бөлімдер */
+        .section {
+            padding: 80px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 'Marck Script', cursive;
+            font-size: 2.8rem;
+            color: var(--gold);
+            margin-bottom: 30px;
+        }
+
+        /* Таймер */
+        .timer {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 40px 0;
+        }
+
+        .timer-item {
+            background: var(--white);
+            padding: 15px 5px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+        }
+
+        .timer-item span {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+        /* Кеш бағдарламасы */
+        .timeline {
+            text-align: left;
+            margin: 40px auto;
+            max-width: 400px;
+            border-left: 2px solid var(--gold);
+            padding: 0 0 0 30px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -41px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 4px solid var(--soft-pink);
+        }
+
+        /* Форма (RSVP) */
+        .rsvp-card {
+            background: var(--white);
+            padding: 40px 20px;
+            border-radius: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #e2e2e2;
+            border-radius: 12px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .btn {
+            background: var(--gold);
+            color: white;
+            padding: 18px 45px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(197, 160, 89, 0.3); }
+
+        /* Галерея */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        footer {
+            padding: 60px 20px;
+            background: var(--beige);
+            margin-top: 50px;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-pattern"></div>
+
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="music-btn" onclick="toggleMusic()">
+        <span id="musicIcon" style="font-size: 20px;">🎵</span>
+    </div>
+
+    <header>
+        <img src="https://cdn-icons-png.flaticon.com/512/3106/3106841.png" class="ornament" alt="ою" data-aos="zoom-in">
+        <div data-aos="fade-up">
+            <p style="letter-spacing: 4px; text-transform: uppercase;">Қыз ұзату</p>
+            <h1 class="main-title">Меруерт</h1>
+            <p style="font-size: 1.2rem;">05 . 07 . 2026</p>
+        </div>
+    </header>
+
+    <section class="section" data-aos="fade-up">
+        <h2>Құрметті ағайын-туыс!</h2>
+        <p>Сіздерді қызымыздың ұзату тойына арналған ақ дастарханымыздың қадірлі қонағы болуға шын жүректен шақырамыз!</p>
+        <p><i>"Қыз — жат жұрттық" десе де дана халқымыз, ұядан ұшырып, жаңа өмірге қадам бастырар сәтте сіздердің ақ баталарыңыз біз үшін өте маңызды.</i></p>
+    </section>
+
+    <section class="section" data-aos="fade-up">
+        <h2 style="font-size: 2rem;">Тойға дейін:</h2>
+        <div class="timer">
+            <div class="timer-item"><span id="days">0</span>күн</div>
+            <div class="timer-item"><span id="hours">0</span>сағат</div>
+            <div class="timer-item"><span id="minutes">0</span>мин</div>
+            <div class="timer-item"><span id="seconds">0</span>сек</div>
+        </div>
+    </section>
+
+    <section class="section" data-aos="fade-up">
+        <h2>Кеш бағдарламасы</h2>
+        <div class="timeline">
+            <div class="timeline-item"><strong>14:00</strong> — Қонақтарды қарсы алу</div>
+            <div class="timeline-item"><strong>15:00</strong> — Салтанатты ашылу</div>
+            <div class="timeline-item"><strong>17:00</strong> — Дәстүрлі шаралар</div>
+            <div class="timeline-item"><strong>20:00</strong> — Қызды шығарып салу</div>
+        </div>
+    </section>
+
+    <section class="section" data-aos="fade-up">
+        <h2>Өтетін орны</h2>
+        <p>Көкшетау қаласы, <strong>"Көкшетау"</strong> мейрамханасы</p>
+        <br>
+        <a href="https://2gis.kz" class="btn">Мекенжайды картадан ашу</a>
+    </section>
+
+    <section class="section" data-aos="zoom-in">
+        <h2>Фотогалерея</h2>
+        <div class="gallery">
+            <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=400" alt="Фото 1">
+            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=400" alt="Фото 2">
+            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=400" alt="Фото 3">
+        </div>
+    </section>
+
+    <section class="section" id="rsvp" data-aos="fade-up">
+        <div class="rsvp-card">
+            <h2>Қатысуыңызды растаңыз</h2>
+            <p>Жауабыңызды күтеміз</p>
+            <br>
+            <input type="text" id="guestName" placeholder="Сіздің есіміңіз">
+            <select id="attendance">
+                <option value="Қатысамын">Тойға келемін</option>
+                <option value="Қатыса алмаймын">Өкінішке орай, келе алмаймын</option>
+            </select>
+            <input type="number" id="guestCount" placeholder="Қонақ саны">
+            <button class="btn" onclick="sendToWhatsApp()">Жіберу</button>
+        </div>
+    </section>
+
+    <footer>
+        <p><strong>- Отбасы тілегі -</strong></p>
+        <p>Біздің қуанышымызға ортақ болғаныңызға рақмет!</p>
+        <p style="margin-top: 20px; opacity: 0.7;">© 2026 Меруерт Қыз ұзату</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        // Музыканы басқару
+        const audio = document.getElementById("bgMusic");
+        const icon = document.getElementById("musicIcon");
+
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play();
+                icon.innerText = "⏸️";
+                icon.parentElement.style.animation = "pulse 1.5s infinite";
+            } else {
+                audio.pause();
+                icon.innerText = "🎵";
+                icon.parentElement.style.animation = "none";
+            }
+        }
+
+        // Таймер
+        const target = new Date('July 5, 2026 14:00:00').getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const diff = target - now;
+            document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+            document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById('minutes').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById('seconds').innerText = Math.floor((diff % (1000 * 60)) / 1000);
+        }, 1000);
+
+        // WhatsApp-қа жіберу
+        function sendToWhatsApp() {
+            const name = document.getElementById('guestName').value;
+            const status = document.getElementById('attendance').value;
+            const count = document.getElementById('guestCount').value;
+            const phone = "77000000000"; // ОСЫ ЖЕРГЕ ӨЗ НӨМІРІҢІЗДІ ЖАЗЫҢЫЗ
+
+            if (!name) { alert("Есіміңізді жазыңыз!"); return; }
+
+            const msg = `Сәлеметсіз бе! %0AМен: ${name} %0AЖауабым: ${status} %0AҚонақ саны: ${count}`;
+            window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
+        }
+    </script>
+</body>
+</html>
