@@ -10,9 +10,9 @@
     
     <style>
         :root {
-            --gold: #9B7E4B; /* Золото-бронзовый цвет как на видео */
+            --gold: #9B7E4B; 
             --text-dark: #333333;
-            --card-bg: rgba(255, 255, 255, 0.75); /* Полупрозрачный белый */
+            --card-bg: rgba(255, 255, 255, 0.75); 
         }
 
         * { 
@@ -27,34 +27,29 @@
             background-color: #000;
         }
 
-        /* Фоновое видео на весь экран */
-        .video-bg-container {
+        /* ===== ФОНОВАЯ КАРТИНКА ===== */
+        .bg-image {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
             z-index: -1;
-            overflow: hidden;
+            /* Ссылка на картинку: */
+            background-image: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.75); /* Немного затемняем картинку, чтобы текст был ярким */
         }
 
-        .video-bg-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(0.85); /* Чуть затемняем для читаемости текста */
-        }
-
-        /* Контейнер для карточек по центру */
         .main-content {
             position: relative;
             z-index: 1;
-            max-width: 480px; /* Ширина мобильного экрана */
+            max-width: 480px; 
             margin: 0 auto;
             padding: 20px;
         }
 
-        /* Эффект стеклянной карточки */
         .glass-card {
             background: var(--card-bg);
             backdrop-filter: blur(10px);
@@ -67,7 +62,6 @@
             border: 1px solid rgba(255,255,255,0.5);
         }
 
-        /* Главный экран (Hero) */
         .hero-section {
             height: 90vh;
             display: flex;
@@ -104,7 +98,6 @@
             margin-bottom: 30px;
         }
 
-        /* Кнопка музыки как на видео */
         .music-btn {
             width: 60px;
             height: 60px;
@@ -125,7 +118,6 @@
             transform: scale(0.95);
         }
 
-        /* Заголовки карточек */
         .card-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: 2rem;
@@ -149,7 +141,6 @@
             font-weight: 500;
         }
 
-        /* Разделитель */
         .separator {
             width: 50px;
             height: 1px;
@@ -157,7 +148,6 @@
             margin: 20px auto;
         }
 
-        /* Таймер */
         .timer-title {
             font-family: 'Montserrat', sans-serif;
             font-size: 0.9rem;
@@ -191,7 +181,6 @@
             margin-top: 5px;
         }
 
-        /* Форма RSVP */
         .form-title {
             font-family: 'Alex Brush', cursive;
             font-size: 3rem;
@@ -234,7 +223,6 @@
             cursor: pointer;
         }
 
-        /* Кастомный кружочек (радиокнопка) */
         .checkmark {
             position: absolute;
             top: -2px;
@@ -313,11 +301,7 @@
         <source src="dombyra.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="video-bg-container">
-        <video autoplay muted loop playsinline>
-            <source src="https://cdn.pixabay.com/video/2021/08/04/83866-584742469_large.mp4" type="video/mp4">
-        </video>
-    </div>
+    <div class="bg-image"></div>
 
     <div class="main-content">
         
@@ -410,7 +394,6 @@
     <script>
         AOS.init({ duration: 1000, once: true });
 
-        // Музыка
         const audio = document.getElementById("bgMusic");
         const musicBtn = document.getElementById("musicBtn");
         const btnSpan = musicBtn.querySelector("span");
@@ -425,7 +408,6 @@
             }
         }
 
-        // Таймер
         const targetDate = new Date('July 5, 2026 14:00:00').getTime();
         
         setInterval(() => {
@@ -440,7 +422,6 @@
             }
         }, 1000);
 
-        // WhatsApp
         function sendToWhatsApp() {
             const name = document.getElementById('guestName').value;
             const attendanceRadios = document.getElementsByName('attendance');
@@ -453,7 +434,7 @@
                 }
             }
             
-            const phone = "77000000000"; // Твой номер
+            const phone = "77000000000"; 
 
             if (!name) { 
                 alert("Аты-жөніңізді жазыңыз / Введите имя!"); 
