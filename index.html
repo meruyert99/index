@@ -59,8 +59,8 @@
         /* Басты бет (Hero) */
         header {
             height: 100vh;
-            background: linear-gradient(rgba(253, 246, 246, 0.6), rgba(253, 246, 246, 0.6)), 
-                        url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2000'); 
+            background: linear-gradient(rgba(253, 246, 246, 0.5), rgba(253, 246, 246, 0.5)), 
+                        url('https://images.unsplash.com/photo-1581375221876-8f3c82526f87?q=80&w=2000'); /* Қазақша дәстүрлі киімдегі қыз (уақытша фото) */
             background-size: cover;
             background-position: center;
             display: flex;
@@ -148,6 +148,21 @@
             border: 4px solid var(--soft-pink);
         }
 
+        /* Дресс-код */
+        .dress-code-card {
+            background: var(--beige);
+            padding: 40px 20px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            margin-top: 30px;
+        }
+
+        .dress-code-icon {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
         /* Форма (RSVP) */
         .rsvp-card {
             background: var(--white);
@@ -181,21 +196,6 @@
 
         .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(197, 160, 89, 0.3); }
 
-        /* Галерея */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .gallery img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 15px;
-        }
-
         footer {
             padding: 60px 20px;
             background: var(--beige);
@@ -214,7 +214,7 @@
     <div class="bg-pattern"></div>
 
     <audio id="bgMusic" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
     </audio>
 
     <div class="music-btn" onclick="toggleMusic()">
@@ -224,9 +224,9 @@
     <header>
         <img src="https://cdn-icons-png.flaticon.com/512/3106/3106841.png" class="ornament" alt="ою" data-aos="zoom-in">
         <div data-aos="fade-up">
-            <p style="letter-spacing: 4px; text-transform: uppercase;">Қыз ұзату</p>
+            <p style="letter-spacing: 4px; text-transform: uppercase; color: var(--gold);">Қыз ұзату</p>
             <h1 class="main-title">Меруерт</h1>
-            <p style="font-size: 1.2rem;">05 . 07 . 2026</p>
+            <p style="font-size: 1.2rem; color: var(--gold);">05 . 07 . 2026</p>
         </div>
     </header>
 
@@ -234,6 +234,7 @@
         <h2>Құрметті ағайын-туыс!</h2>
         <p>Сіздерді қызымыздың ұзату тойына арналған ақ дастарханымыздың қадірлі қонағы болуға шын жүректен шақырамыз!</p>
         <p><i>"Қыз — жат жұрттық" десе де дана халқымыз, ұядан ұшырып, жаңа өмірге қадам бастырар сәтте сіздердің ақ баталарыңыз біз үшін өте маңызды.</i></p>
+        <img src="https://images.unsplash.com/photo-1512411019054-9e9f658390b1?q=80&w=600" alt="Киіз үй (уақытша фото)" style="width: 100%; max-width: 400px; border-radius: 20px; margin-top: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
     </section>
 
     <section class="section" data-aos="fade-up">
@@ -257,19 +258,18 @@
     </section>
 
     <section class="section" data-aos="fade-up">
+        <h2>Дресс-код</h2>
+        <div class="dress-code-card">
+            <div class="dress-code-icon">👘</div>
+            <p>Құрметті қонақтар! Тойдың сәнін келтіру үшін, сіздерден <strong>ұлттық нақыштағы</strong> (ою-өрнекті) киім немесе заманауи этникалық стильдегі киім киіп келулеріңізді сұраймыз.</p>
+        </div>
+    </section>
+
+    <section class="section" data-aos="fade-up">
         <h2>Өтетін орны</h2>
         <p>Көкшетау қаласы, <strong>"Көкшетау"</strong> мейрамханасы</p>
         <br>
         <a href="https://2gis.kz" class="btn">Мекенжайды картадан ашу</a>
-    </section>
-
-    <section class="section" data-aos="zoom-in">
-        <h2>Фотогалерея</h2>
-        <div class="gallery">
-            <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=400" alt="Фото 1">
-            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=400" alt="Фото 2">
-            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=400" alt="Фото 3">
-        </div>
     </section>
 
     <section class="section" id="rsvp" data-aos="fade-up">
