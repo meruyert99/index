@@ -1,449 +1,552 @@
 <!DOCTYPE html>
 <html lang="kk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Меруерт - Қыз ұзату</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <style>
-        :root {
-            --gold: #9B7E4B; 
-            --text-dark: #333333;
-            --card-bg: rgba(255, 255, 255, 0.75); 
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меруерт - Қыз ұзату</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --gold: #9B7E4B; 
+            --text-dark: #333333;
+            --card-bg: rgba(255, 255, 255, 0.75); 
+        }
 
-        * { 
-            box-sizing: border-box; 
-            margin: 0; 
-            padding: 0;
-            font-family: 'Montserrat', sans-serif;
-        }
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
 
-        body {
-            color: var(--text-dark);
-            background-color: #000;
-        }
+        body {
+            color: var(--text-dark);
+            background-color: #000;
+        }
 
-        /* ===== ФОНОВАЯ КАРТИНКА ===== */
-        .bg-image {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            /* Ссылка на картинку: */
-            background-image: url('saukele.jpg');
-            background-size: cover;
-            background-position: center;
-            filter: brightness(0.90); /* Немного затемняем картинку, чтобы текст был ярким */
-        }
+        /* ===== ФОНОВАЯ КАРТИНКА ===== */
+        .bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            /* Ссылка на картинку: */
+            background-image: url('saukele.jpg');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.75);
+        }
 
-        .main-content {
-            position: relative;
-            z-index: 1;
-            max-width: 480px; 
-            margin: 0 auto;
-            padding: 20px;
-        }
+        .main-content {
+            position: relative;
+            z-index: 1;
+            max-width: 480px; 
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-        .glass-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px 25px;
-            margin-bottom: 25px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border: 1px solid rgba(255,255,255,0.5);
-        }
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px 25px;
+            margin-bottom: 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.5);
+        }
 
-        .hero-section {
-            height: 90vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+        .hero-section {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
 
-        .name-cursive {
-            font-family: 'Alex Brush', cursive;
-            font-size: 5rem;
-            color: #ffffff;
-            line-height: 1;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-        }
+        .name-cursive {
+            font-family: 'Alex Brush', cursive;
+            font-size: 5rem;
+            color: #ffffff;
+            line-height: 1;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
 
-        .subtitle {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            color: #ffffff;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
-        }
+        .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: #ffffff;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
 
-        .date {
-            font-size: 1rem;
-            color: #ffffff;
-            letter-spacing: 2px;
-            font-weight: 400;
-            margin-bottom: 30px;
-        }
+        .date {
+            font-size: 1rem;
+            color: #ffffff;
+            letter-spacing: 2px;
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
 
-        .music-btn {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            backdrop-filter: blur(5px);
-            color: #ffffff;
-            font-size: 24px;
-            transition: 0.3s;
-        }
+        .music-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            color: #ffffff;
+            font-size: 24px;
+            transition: 0.3s;
+        }
 
-        .music-btn:active {
-            transform: scale(0.95);
-        }
+        .music-btn:active {
+            transform: scale(0.95);
+        }
 
-        .card-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            color: var(--gold);
-            margin-bottom: 15px;
-            font-style: italic;
-        }
+        .card-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-style: italic;
+        }
 
-        .card-subtitle {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
-            color: var(--gold);
-            margin-bottom: 10px;
-        }
+        .card-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
 
-        .card-text {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 500;
-        }
+        .card-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
 
-        .separator {
-            width: 50px;
-            height: 1px;
-            background-color: var(--gold);
-            margin: 20px auto;
-        }
+        .separator {
+            width: 50px;
+            height: 1px;
+            background-color: var(--gold);
+            margin: 20px auto;
+        }
 
-        .timer-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
+        /* ===== КАЛЕНДАРЬ ===== */
+        .calendar-month {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            color: var(--gold);
+            margin: 20px 0 15px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 500;
+        }
 
-        .timer {
-            display: flex;
-            justify-content: space-between;
-        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            text-align: center;
+            max-width: 320px;
+            margin: 0 auto;
+        }
 
-        .timer-box {
-            text-align: center;
-            flex: 1;
-        }
+        .weekday {
+            font-size: 0.8rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
 
-        .timer-box span {
-            display: block;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.2rem;
-            color: var(--text-dark);
-            line-height: 1;
-        }
+        .day {
+            font-size: 1.2rem;
+            font-family: 'Cormorant Garamond', serif;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            color: var(--text-dark);
+            position: relative;
+        }
 
-        .timer-box p {
-            font-size: 0.6rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 5px;
-        }
+        .day.selected {
+            background-color: var(--gold);
+            color: #ffffff;
+            border-radius: 50%;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(155, 126, 75, 0.4);
+        }
 
-        .form-title {
-            font-family: 'Alex Brush', cursive;
-            font-size: 3rem;
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
+        .day.selected::before {
+            content: '♥';
+            position: absolute;
+            top: -16px;
+            color: var(--gold);
+            font-size: 0.9rem;
+        }
 
-        input[type="text"] {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 20px;
-            border: 1px solid var(--gold);
-            border-radius: 25px;
-            background: transparent;
-            text-align: center;
-            font-size: 0.9rem;
-            outline: none;
-            color: var(--text-dark);
-        }
+        /* ===== ТАЙМЕР И ФОРМА ===== */
+        .timer-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
 
-        .radio-group {
-            text-align: left;
-            margin-bottom: 20px;
-            padding-left: 10%;
-        }
+        .timer {
+            display: flex;
+            justify-content: space-between;
+        }
 
-        .radio-label {
-            display: block;
-            margin-bottom: 15px;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            cursor: pointer;
-            position: relative;
-            padding-left: 30px;
-        }
+        .timer-box {
+            text-align: center;
+            flex: 1;
+        }
 
-        .radio-label input {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-        }
+        .timer-box span {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            line-height: 1;
+        }
 
-        .checkmark {
-            position: absolute;
-            top: -2px;
-            left: 0;
-            height: 20px;
-            width: 20px;
-            background-color: transparent;
-            border: 1px solid var(--gold);
-            border-radius: 50%;
-        }
+        .timer-box p {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
 
-        .radio-label:hover input ~ .checkmark {
-            background-color: rgba(155, 126, 75, 0.1);
-        }
+        .form-title {
+            font-family: 'Alex Brush', cursive;
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
 
-        .radio-label input:checked ~ .checkmark {
-            background-color: var(--gold);
-        }
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid var(--gold);
+            border-radius: 25px;
+            background: transparent;
+            text-align: center;
+            font-size: 0.9rem;
+            outline: none;
+            color: var(--text-dark);
+        }
 
-        .radio-label .checkmark:after {
-            content: "";
-            position: absolute;
-            display: none;
-        }
+        .radio-group {
+            text-align: left;
+            margin-bottom: 20px;
+            padding-left: 10%;
+        }
 
-        .radio-label input:checked ~ .checkmark:after {
-            display: block;
-        }
+        .radio-label {
+            display: block;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            position: relative;
+            padding-left: 30px;
+        }
 
-        .radio-label .checkmark:after {
-            top: 5px;
-            left: 5px;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: white;
-        }
+        .radio-label input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
 
-        .btn-submit {
-            background-color: var(--gold);
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+        .checkmark {
+            position: absolute;
+            top: -2px;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: transparent;
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+        }
 
-        .btn-submit:hover {
-            opacity: 0.8;
-        }
+        .radio-label:hover input ~ .checkmark {
+            background-color: rgba(155, 126, 75, 0.1);
+        }
 
-        .two-gis-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 15px;
-            width: 50px;
-            height: 50px;
-            background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        .two-gis-btn img {
-            width: 30px;
-        }
+        .radio-label input:checked ~ .checkmark {
+            background-color: var(--gold);
+        }
 
-    </style>
+        .radio-label .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        .radio-label input:checked ~ .checkmark:after {
+            display: block;
+            top: 5px;
+            left: 5px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .btn-submit {
+            background-color: var(--gold);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-submit:hover {
+            opacity: 0.8;
+        }
+
+        .two-gis-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 15px;
+            width: 50px;
+            height: 50px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .two-gis-btn img {
+            width: 30px;
+        }
+
+    </style>
 </head>
 <body>
 
-    <audio id="bgMusic" loop>
-        <source src="song.mp3" type="audio/mpeg">
-    </audio>
+    <audio id="bgMusic" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
 
-    <div class="bg-image"></div>
+    <div class="bg-image"></div>
 
-    <div class="main-content">
-        
-        <section class="hero-section" data-aos="fade-in">
-            <h1 class="name-cursive">Меруерт</h1>
-            <h2 class="subtitle">Қыз ұзату</h2>
-            <p class="date">05.07.2026 ЖЫЛ</p>
-            
-            <div class="music-btn" id="musicBtn" onclick="toggleMusic()">
-                <span>▶</span>
-            </div>
-        </section>
+    <div class="main-content">
+        
+        <section class="hero-section" data-aos="fade-in">
+            <h1 class="name-cursive">Меруерт</h1>
+            <h2 class="subtitle">Қыз ұзату</h2>
+            <p class="date">05.07.2026 ЖЫЛ</p>
+            
+            <div class="music-btn" id="musicBtn" onclick="toggleMusic()">
+                <span>▶</span>
+            </div>
+        </section>
 
-        <div class="glass-card" data-aos="fade-up">
-            <h2 class="card-subtitle">ҚҰРМЕТТІ ҚОНАҚТАР!</h2>
-            <div class="separator"></div>
-            <p class="card-text">
-                СІЗДЕРДІ АЯУЛЫ ҚЫЗЫМЫЗ<br>
-                <span style="font-family: 'Alex Brush', cursive; font-size: 2.8rem; color: var(--gold); display: block; margin: 10px 0; text-transform: none;">Меруерттің</span>
-                ҰЗАТУ ТОЙЫНА АРНАЛҒАН САЛТАНАТТЫ АҚ ДАСТАРХАНЫМЫЗДЫҢ ҚАДІРЛІ ҚОНАҒЫ БОЛУҒА ШАҚЫРАМЫЗ!
-            </p>
-        </div>
+        <div class="glass-card" data-aos="fade-up">
+            <h2 class="card-subtitle">ҚҰРМЕТТІ ҚОНАҚТАР!</h2>
+            <div class="separator"></div>
+            <p class="card-text">
+                СІЗДЕРДІ АЯУЛЫ ҚЫЗЫМЫЗ<br>
+                <span style="font-family: 'Alex Brush', cursive; font-size: 2.8rem; color: var(--gold); display: block; margin: 10px 0; text-transform: none;">Меруерттің</span>
+                ҰЗАТУ ТОЙЫНА АРНАЛҒАН САЛТАНАТТЫ АҚ ДАСТАРХАНЫМЫЗДЫҢ ҚАДІРЛІ ҚОНАҒЫ БОЛУҒА ШАҚЫРАМЫЗ!
+            </p>
+        </div>
 
-        <div class="glass-card" data-aos="fade-up">
-            <h2 class="card-title">Той салтанаты:</h2>
-            <p class="card-text">05 ШІЛДЕ 2026</p>
-            <p class="card-text" style="font-size: 1.2rem; margin-top: 5px;">14:00</p>
-            
-            <div class="separator"></div>
-            
-            <h2 class="card-title">Мекен-жайымыз:</h2>
-            <p class="card-text" style="margin-bottom: 10px;">
-                КӨКШЕТАУ ҚАЛАСЫ,<br>
-                "КӨКШЕТАУ" МЕЙРАМХАНАСЫ
-            </p>
-            <p style="font-size: 0.75rem; text-transform: uppercase; color: #666; margin-top: 15px;">
-                Жетуге ыңғайлы болу үшін төмендегі 2GIS сілтемесін қолданыңыз:
-            </p>
-            <a href="https://2gis.kz/kokshetau/search/%D0%A0%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD%20%D0%BA%D0%BE%D0%BA%D1%88%D0%B5%D1%82%D0%B0%D1%83/firm/70000001033047776/69.380574%2C53.284449?m=69.380821%2C53.284928%2F17.29" target="_blank" class="two-gis-btn">
-                <img src="https://play-lh.googleusercontent.com/XVD5b0yJl830a8_gga0Pwqn4D8bEpa-k00piLYVgPegVPYqgcom4Wdq-irjQlM2hsw" alt="2GIS">
-            </a>
-        </div>
+        <div class="glass-card" data-aos="fade-up">
+            <h2 class="card-title">Той салтанаты:</h2>
+            <p class="card-text">05 ШІЛДЕ 2026</p>
+            <p class="card-text" style="font-size: 1.2rem; margin-top: 5px;">14:00</p>
+            
+            <div class="separator"></div>
+            
+            <h2 class="card-title">Мекен-жайымыз:</h2>
+            <p class="card-text" style="margin-bottom: 10px;">
+                КӨКШЕТАУ ҚАЛАСЫ,<br>
+                "КӨКШЕТАУ" МЕЙРАМХАНАСЫ
+            </p>
+            <p style="font-size: 0.75rem; text-transform: uppercase; color: #666; margin-top: 15px;">
+                Жетуге ыңғайлы болу үшін төмендегі 2GIS сілтемесін қолданыңыз:
+            </p>
+            <a href="https://2gis.kz/kokshetau/search/%D0%A0%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD%20%D0%BA%D0%BE%D0%BA%D1%88%D0%B5%D1%82%D0%B0%D1%83/firm/70000001033047776/69.380574%2C53.284449?m=69.380821%2C53.284928%2F17.29" target="_blank" class="two-gis-btn">
+                <img src="https://play-lh.googleusercontent.com/XVD5b0yJl830a8_gga0Pwqn4D8bEpa-k00piLYVgPegVPYqgcom4Wdq-irjQlM2hsw" alt="2GIS">
+            </a>
+        </div>
 
-        <div class="glass-card" data-aos="fade-up">
-            <h2 class="card-title">Той иелері:</h2>
-            <p class="card-text" style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; text-transform: none; color: var(--text-dark);">
-                Жанатай, Гүлнара
-            </p>
-        </div>
+        <div class="glass-card" data-aos="fade-up">
+            <h2 class="card-title">Той күні:</h2>
+            <div class="calendar-month">Шілде 2026</div>
+            <div class="calendar-grid">
+                <div class="weekday">Дс</div>
+                <div class="weekday">Сс</div>
+                <div class="weekday">Ср</div>
+                <div class="weekday">Бс</div>
+                <div class="weekday">Жм</div>
+                <div class="weekday">Сн</div>
+                <div class="weekday">Жк</div>
+                
+                <div class="day empty"></div>
+                <div class="day empty"></div>
+                
+                <div class="day">1</div>
+                <div class="day">2</div>
+                <div class="day">3</div>
+                <div class="day">4</div>
+                <div class="day selected">5</div> <div class="day">6</div>
+                <div class="day">7</div>
+                <div class="day">8</div>
+                <div class="day">9</div>
+                <div class="day">10</div>
+                <div class="day">11</div>
+                <div class="day">12</div>
+                <div class="day">13</div>
+                <div class="day">14</div>
+                <div class="day">15</div>
+                <div class="day">16</div>
+                <div class="day">17</div>
+                <div class="day">18</div>
+                <div class="day">19</div>
+                <div class="day">20</div>
+                <div class="day">21</div>
+                <div class="day">22</div>
+                <div class="day">23</div>
+                <div class="day">24</div>
+                <div class="day">25</div>
+                <div class="day">26</div>
+                <div class="day">27</div>
+                <div class="day">28</div>
+                <div class="day">29</div>
+                <div class="day">30</div>
+                <div class="day">31</div>
+            </div>
+        </div>
 
-        <div class="glass-card" data-aos="fade-up">
-            <p class="timer-title">Той салтанатына дейін:</p>
-            <div class="timer">
-                <div class="timer-box"><span id="days">00</span><p>күн</p></div>
-                <div class="timer-box"><span id="hours">00</span><p>сағат</p></div>
-                <div class="timer-box"><span id="minutes">00</span><p>минут</p></div>
-                <div class="timer-box"><span id="seconds">00</span><p>секунд</p></div>
-            </div>
-        </div>
+        <div class="glass-card" data-aos="fade-up">
+            <h2 class="card-title">Той иелері:</h2>
+            <p class="card-text" style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; text-transform: none; color: var(--text-dark);">
+                Жанатай, Гүлнара
+            </p>
+        </div>
 
-        <div class="glass-card" style="padding-bottom: 50px;" data-aos="fade-up">
-            <h2 class="form-title">Қуанышымызға ортақ болыңыздар!</h2>
-            <p class="card-text" style="margin-bottom: 25px; font-size: 0.8rem;">
-                Тойға қатысуыңызды растауыңызды сұраймыз!
-            </p>
-            
-            <input type="text" id="guestName" placeholder="ТОЛЫҚ АТЫ-ЖӨНІҢІЗ:">
-            
-            <div class="radio-group">
-                <label class="radio-label">Иә, өзім келемін
-                    <input type="radio" name="attendance" value="Иә, өзім келемін" checked>
-                    <span class="checkmark"></span>
-                </label>
-                <label class="radio-label">Жұбайыммен боламын
-                    <input type="radio" name="attendance" value="Жұбайыммен боламын">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="radio-label">Өкінішке орай, келе алмаймын
-                    <input type="radio" name="attendance" value="Келе алмаймын">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            
-            <button class="btn-submit" onclick="sendToWhatsApp()">Жіберу</button>
-        </div>
+        <div class="glass-card" data-aos="fade-up">
+            <p class="timer-title">Той салтанатына дейін:</p>
+            <div class="timer">
+                <div class="timer-box"><span id="days">00</span><p>күн</p></div>
+                <div class="timer-box"><span id="hours">00</span><p>сағат</p></div>
+                <div class="timer-box"><span id="minutes">00</span><p>минут</p></div>
+                <div class="timer-box"><span id="seconds">00</span><p>секунд</p></div>
+            </div>
+        </div>
 
-    </div>
+        <div class="glass-card" style="padding-bottom: 50px;" data-aos="fade-up">
+            <h2 class="form-title">Қуанышымызға ортақ болыңыздар!</h2>
+            <p class="card-text" style="margin-bottom: 25px; font-size: 0.8rem;">
+                Тойға қатысуыңызды растауыңызды сұраймыз!
+            </p>
+            
+            <input type="text" id="guestName" placeholder="ТОЛЫҚ АТЫ-ЖӨНІҢІЗ:">
+            
+            <div class="radio-group">
+                <label class="radio-label">Иә, өзім келемін
+                    <input type="radio" name="attendance" value="Иә, өзім келемін" checked>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="radio-label">Жұбайыммен боламын
+                    <input type="radio" name="attendance" value="Жұбайыммен боламын">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="radio-label">Өкінішке орай, келе алмаймын
+                    <input type="radio" name="attendance" value="Келе алмаймын">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            
+            <button class="btn-submit" onclick="sendToWhatsApp()">Жіберу</button>
+        </div>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 1000, once: true });
+    </div>
 
-        const audio = document.getElementById("bgMusic");
-        const musicBtn = document.getElementById("musicBtn");
-        const btnSpan = musicBtn.querySelector("span");
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
 
-        function toggleMusic() {
-            if (audio.paused) {
-                audio.play().catch(e => alert("Добавьте файл dombyra.mp3"));
-                btnSpan.innerText = "⏸";
-            } else {
-                audio.pause();
-                btnSpan.innerText = "▶";
-            }
-        }
+        const audio = document.getElementById("bgMusic");
+        const musicBtn = document.getElementById("musicBtn");
+        const btnSpan = musicBtn.querySelector("span");
 
-        const targetDate = new Date('July 5, 2026 14:00:00').getTime();
-        
-        setInterval(() => {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
-            
-            if (distance > 0) {
-                document.getElementById('days').innerText = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
-                document.getElementById('hours').innerText = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-                document.getElementById('minutes').innerText = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-                document.getElementById('seconds').innerText = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
-            }
-        }, 1000);
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play().catch(e => alert("Добавьте файл song.mp3 в папку с сайтом"));
+                btnSpan.innerText = "⏸";
+            } else {
+                audio.pause();
+                btnSpan.innerText = "▶";
+            }
+        }
 
-        function sendToWhatsApp() {
-            const name = document.getElementById('guestName').value;
-            const attendanceRadios = document.getElementsByName('attendance');
-            let status = "";
-            
-            for (let i = 0; i < attendanceRadios.length; i++) {
-                if (attendanceRadios[i].checked) {
-                    status = attendanceRadios[i].value;
-                    break;
-                }
-            }
-            
-            const phone = "77000000000"; 
+        const targetDate = new Date('July 5, 2026 14:00:00').getTime();
+        
+        setInterval(() => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            
+            if (distance > 0) {
+                document.getElementById('days').innerText = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
+                document.getElementById('hours').innerText = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+                document.getElementById('minutes').innerText = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+                document.getElementById('seconds').innerText = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
+            }
+        }, 1000);
 
-            if (!name) { 
-                alert("Аты-жөніңізді жазыңыз / Введите имя!"); 
-                return; 
-            }
+        function sendToWhatsApp() {
+            const name = document.getElementById('guestName').value;
+            const attendanceRadios = document.getElementsByName('attendance');
+            let status = "";
+            
+            for (let i = 0; i < attendanceRadios.length; i++) {
+                if (attendanceRadios[i].checked) {
+                    status = attendanceRadios[i].value;
+                    break;
+                }
+            }
+            
+            const phone = "77000000000"; 
 
-            const msg = `Сәлеметсіз бе! %0AМен: ${name} %0AЖауабым: ${status}`;
-            window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
-        }
-    </script>
+            if (!name) { 
+                alert("Аты-жөніңізді жазыңыз / Введите имя!"); 
+                return; 
+            }
+
+            const msg = `Сәлеметсіз бе! %0AМен: ${name} %0AЖауабым: ${status}`;
+            window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
+        }
+    </script>
 </body>
-</html> интегрируй календарь с этим кодом
+</html>
